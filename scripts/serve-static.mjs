@@ -12,7 +12,8 @@ const types = {
   ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript",
   ".json": "application/json", ".txt": "text/plain", ".svg": "image/svg+xml",
   ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp",
-  ".ico": "image/x-icon", ".woff2": "font/woff2",
+  ".ico": "image/x-icon", ".woff2": "font/woff2", ".xml": "application/xml",
+  ".webmanifest": "application/manifest+json",
 };
 
 createServer(async (request, response) => {

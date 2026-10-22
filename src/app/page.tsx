@@ -1,3 +1,5 @@
+import { pageMetadata } from "@/lib/seo";
+import { PageStructuredData } from "@/components/seo/structured-data";
 import Image from "next/image";
 import Link from "next/link";
 import { QuoteCarousel } from "@/components/home/quote-carousel";
@@ -5,6 +7,8 @@ import { FacebookPageEmbed } from "@/components/media/facebook-page-embed";
 import { YouTubeEmbed } from "@/components/media/youtube-embed";
 import { Button } from "@/components/ui/button";
 import { gallery, heroPhoto, reviews, videos } from "@/data/site-content";
+
+export const metadata = pageMetadata("home");
 
 const ferell = reviews.find((review) => review.id === "aubre");
 const press = reviews.filter((review) => review.home && review.id !== "aubre");
@@ -20,6 +24,7 @@ export default function HomePage() {
 
   return (
     <div className="overflow-x-clip">
+      <PageStructuredData page="home" />
       <section className="relative min-h-[calc(100svh-4.5rem)] overflow-hidden">
         <div className="pointer-events-none absolute inset-y-0 right-[-6.67%] left-0">
           <Image

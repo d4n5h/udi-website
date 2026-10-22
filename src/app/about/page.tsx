@@ -1,19 +1,18 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { PageStructuredData } from "@/components/seo/structured-data";
 import Image from "next/image";
 import { PhotoLightboxGallery } from "@/components/media/photo-lightbox-gallery";
 import { ReviewList } from "@/components/review-list";
 import { biography, gallery, reviews, venues } from "@/data/site-content";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: biography[0],
-};
+export const metadata = pageMetadata("about");
 
 const aboutReviews = reviews.filter((review) => review.about);
 
 export default function AboutPage() {
   return (
     <>
+      <PageStructuredData page="about" />
       <section className="relative h-80 sm:h-96">
         <Image
           src={gallery[0].src}

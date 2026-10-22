@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { PageStructuredData } from "@/components/seo/structured-data";
 import Image from "next/image";
 import { assetPath } from "@/lib/asset-path";
 import { YouTubeEmbed } from "@/components/media/youtube-embed";
@@ -6,10 +7,7 @@ import { ReviewList } from "@/components/review-list";
 import { Button } from "@/components/ui/button";
 import { biography, epkDownload, epkVideos, reviews, site, socials } from "@/data/site-content";
 
-export const metadata: Metadata = {
-  title: "Electronic press kit",
-  description: "Biography, reviews, films and the downloadable press kit for Udi Shlomo.",
-};
+export const metadata = pageMetadata("epk");
 
 const epkReviews = reviews.filter((review) => review.epk);
 const listen = socials.filter((item) =>
@@ -19,6 +17,7 @@ const listen = socials.filter((item) =>
 export default function EpkPage() {
   return (
     <>
+      <PageStructuredData page="epk" />
       <section className="relative min-h-[calc(100svh-4.5rem)]">
         <Image
           src={assetPath("/images/hero-udi-wide.jpg")}

@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { PageStructuredData } from "@/components/seo/structured-data";
 import { VideoProgramme } from "@/components/music/video-programme";
 import { musicVideos, socials, spotify } from "@/data/site-content";
 
-export const metadata: Metadata = {
-  title: "Music",
-  description: "Spotify, Apple Music, Bandcamp and live films from Udi Shlomo.",
-};
+export const metadata = pageMetadata("music");
 
 const listenOrder = ["YouTube", "Spotify", "Bandcamp", "Apple Music"] as const;
 const listen = listenOrder.flatMap((label) => socials.filter((item) => item.label === label));
@@ -13,7 +11,9 @@ const listen = listenOrder.flatMap((label) => socials.filter((item) => item.labe
 export default function MusicPage() {
   return (
     <>
+      <PageStructuredData page="music" />
       <section className="shell py-16 sm:py-24">
+        <h1 className="sr-only">Udi Shlomo music and live videos</h1>
         <iframe
           className="mt-8 h-[352px] w-full"
           src={spotify.embedUrl}

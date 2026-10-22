@@ -25,6 +25,7 @@ export function SiteFooter() {
                 </Link>
               ),
             )}
+            <Link href="/epk" className="hover:text-primary">Press kit</Link>
           </nav>
           <SocialLinks />
         </div>

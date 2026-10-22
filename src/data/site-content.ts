@@ -7,7 +7,7 @@ export const site = {
   phoneDisplay: "+47 410 64 044",
   phoneHref: "tel:+4741064044",
   location: "Trondheim, Norway",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://udishlomomusic.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://d4n5h.github.io/udi-website/",
   description:
     "Udi Shlomo is a drummer, composer and arranger living in Trondheim. World jazz drawn from Kibbutz Nahshon, Jewish tradition, and life in Norway.",
 } as const;

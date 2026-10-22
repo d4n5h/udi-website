@@ -32,3 +32,5 @@ for (const file of readdirSync(root, { recursive: true })) {
 const contact = readFileSync(path.join(root, "contact", "index.html"), "utf8");
 assert.ok(contact.includes("Open Email Draft"), "Contact page must explain email draft behavior");
 console.log(`Verified ${pages.length} pages, 404, .nojekyll and ${checked} local links/assets under ${basePath || "/"}.`);
+
+await import("./check-seo.mjs");
