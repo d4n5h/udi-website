@@ -27,7 +27,7 @@ The exported site is in `out/`. Serve it over HTTP; opening HTML files directly 
 
 After the deployment completes, the default URL is <https://d4n5h.github.io/udi-website/>.
 
-The workflow installs dependencies, builds and checks the static export, uploads `out/`, and deploys with GitHub's official Pages actions. It does not need API keys or a branch containing generated files. Keep `out/`, `.next-static/`, and the old `udi-shlomo-website/` export folder out of Git; they are ignored.
+The workflow installs dependencies, builds and checks the static export, uploads `out/`, and deploys with GitHub's official Pages actions. It does not need API keys or a branch containing generated files. Commit `.npmrc` alongside `package-lock.json` so local and CI dependency resolution use the same settings. Keep `out/`, `.next-static/`, and the old `udi-shlomo-website/` export folder out of Git; they are ignored.
 
 GitHub's workflow documentation: <https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages>.
 
