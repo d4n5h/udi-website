@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-fraunces);
+  --font-heading: var(--font-fraunces);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+:root {
+  --background: #14171f;
+  --foreground: #f4f1ea;
+  --card: #1c202b;
+  --card-foreground: #f4f1ea;
+  --popover: #1c202b;
+  --popover-foreground: #f4f1ea;
+  --primary: #83623d;
+  --primary-foreground: #f4f1ea;
+  --secondary: #252a36;
+  --secondary-foreground: #f4f1ea;
+  --muted: #252a36;
+  --muted-foreground: #aba69b;
+  --accent: #252a36;
+  --accent-foreground: #f4f1ea;
+  --destructive: #e57373;
+  --border: #252a36;
+  --input: #252a36;
+  --ring: #83623d;
+  --chart-1: #83623d;
+  --chart-2: #aba69b;
+  --chart-3: #4487dd;
+  --chart-4: #f4f1ea;
+  --chart-5: #1c202b;
+  --radius: 0px;
+  --sidebar: #1c202b;
+  --sidebar-foreground: #f4f1ea;
+  --sidebar-primary: #83623d;
+  --sidebar-primary-foreground: #f4f1ea;
+  --sidebar-accent: #252a36;
+  --sidebar-accent-foreground: #f4f1ea;
+  --sidebar-border: #252a36;
+  --sidebar-ring: #83623d;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    --font-display: var(--font-fraunces);
+    --font-heading: var(--font-fraunces);
+    @apply font-sans bg-background text-foreground;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: #83623d;
+    color: #f4f1ea;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+}
+
+@utility text-display-hero {
+  font-size: clamp(4rem, 10vw, 8rem);
+}
+
+@utility text-display-1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+@utility text-display-2 {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+}
+
+@utility text-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+@utility text-statement {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 90rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 640ms var(--ease-out) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.hover-lift {
+  transition: transform 200ms var(--ease-out);
+}
+
+.hover-lift:active {
+  transform: scale(0.97);
+}
+
+.bit-widget,
+.bit-widget-container {
+  background: #1c202b !important;
+  color: #f4f1ea !important;
+  border-radius: 0 !important;
+}
+
+.bit-widget .bit-nav-bar,
+.bit-widget .bit-event,
+.bit-widget .bit-event-list,
+.bit-widget .bit-events-container,
+.bit-widget .bit-no-dates-container,
+.bit-widget .bit-follow-section-background {
+  background: #1c202b !important;
+  color: #f4f1ea !important;
+}
+
+.bit-widget .bit-event-list-title,
+.bit-widget .bit-no-dates-title,
+.bit-widget .bit-venue,
+.bit-widget .bit-location,
+.bit-widget a {
+  color: #f4f1ea !important;
+}
+
+.bit-widget .bit-button,
+.bit-widget .bit-track-button,
+.bit-widget .bit-rsvp-button,
+.bit-widget .bit-offers {
+  background: #83623d !important;
+  color: #f4f1ea !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
