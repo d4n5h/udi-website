@@ -1,4 +1,4 @@
-import { site, socials } from "@/data/site-content";
+import { biography, site, socials } from "@/data/site-content";
 import { seoPages, siteUrl, type SeoPage } from "@/lib/seo";
 
 function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -19,10 +19,6 @@ export function SiteStructuredData() {
         "@id": siteUrl("#artist"),
         name: site.name,
         url: siteUrl(),
-        description: site.description,
-        image: siteUrl("images/hero-udi-wide.jpg"),
-        jobTitle: ["Drummer", "Composer", "Arranger"],
-        homeLocation: { "@type": "Place", name: site.location },
         sameAs: socials.map(({ href }) => href),
       },
       {
@@ -41,6 +37,11 @@ export function SiteStructuredData() {
 export function PageStructuredData({ page }: { page: SeoPage }) {
   const { path, title, description, label, type } = seoPages[page];
   const url = siteUrl(path);
+  const artist = siteUrl("#artist");
+  const group = siteUrl("#group");
+  const listen = socials
+    .filter(({ label }) => ["YouTube", "Spotify", "Bandcamp", "Apple Music"].includes(label))
+    .map(({ href }) => href);
   const breadcrumb = {
     "@type": "BreadcrumbList",
     "@id": `${url}#breadcrumb`,
@@ -60,10 +61,83 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
         description,
         inLanguage: "en",
         isPartOf: { "@id": siteUrl("#website") },
-        about: { "@id": siteUrl("#artist") },
-        ...(page === "about" ? { mainEntity: { "@id": siteUrl("#artist") } } : {}),
+        about: { "@id": artist },
+        ...(page === "home" || page === "epk" ? { image: siteUrl("images/hero-udi-wide.jpg") } : {}),
+        ...(page === "about" ? { image: siteUrl("images/gallery/udi-transform.jpg") } : {}),
+        ...(page === "about"
+          ? {
+              mainEntity: {
+                "@type": "Person",
+                "@id": artist,
+                name: site.name,
+                description: biography[0],
+                jobTitle: ["Drummer", "Composer", "Arranger"],
+                image: siteUrl("images/gallery/udi-transform.jpg"),
+                homeLocation: { "@type": "Place", name: "Trondheim" },
+                sameAs: socials.map(({ href }) => href),
+                url: siteUrl(),
+              },
+            }
+          : {}),
+        ...(page === "music" ? { mainEntity: { "@id": group } } : {}),
+        ...(page === "contact"
+          ? {
+              mainEntity: {
+                "@type": "Person",
+                "@id": artist,
+                name: site.name,
+                email: site.email,
+                telephone: site.phoneDisplay,
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Trondheim",
+                  addressCountry: "Norway",
+                },
+              },
+            }
+          : {}),
         ...(page === "home" ? {} : { breadcrumb: { "@id": `${url}#breadcrumb` } }),
       },
+      ...(page === "home"
+        ? [
+            {
+              "@type": "Person",
+              "@id": artist,
+              name: site.name,
+              description: "Drummer, composer and arranger, based in Trondheim.",
+              jobTitle: ["Drummer", "Composer", "Arranger"],
+              image: siteUrl("images/hero-udi-wide.jpg"),
+              homeLocation: { "@type": "Place", name: "Trondheim" },
+            },
+            {
+              "@type": "MusicGroup",
+              "@id": group,
+              name: site.name,
+              url: siteUrl(),
+              genre: "World Jazz",
+              image: siteUrl("images/hero-udi-wide.jpg"),
+              sameAs: socials.map(({ href }) => href),
+            },
+          ]
+        : []),
+      ...(page === "music"
+        ? [
+            {
+              "@type": "MusicAlbum",
+              "@id": siteUrl("music/#you-and-me"),
+              name: "You & Me",
+              byArtist: { "@id": group },
+            },
+            {
+              "@type": "MusicGroup",
+              "@id": group,
+              name: site.name,
+              url,
+              sameAs: listen,
+              album: { "@id": siteUrl("music/#you-and-me") },
+            },
+          ]
+        : []),
       ...(page === "home" ? [] : [breadcrumb]),
     ],
   }} />;

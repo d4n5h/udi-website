@@ -16,36 +16,36 @@ export const seoPages = {
   },
   about: {
     path: "about/",
-    title: "Biography & Reviews | Udi Shlomo",
+    title: "Biography & Reviews | Udi Shlomo, Jazz Drummer",
     description: "Meet Udi Shlomo, a jazz drummer and composer from Kibbutz Nahshon, based in Trondheim. Read his biography, explore concert photos and discover press reviews.",
     label: "About",
     type: "ProfilePage",
   },
   music: {
     path: "music/",
-    title: "Music & Live Videos | Udi Shlomo",
-    description: "Listen to Udi Shlomo on Spotify, Bandcamp and Apple Music. Watch live quintet performances and videos from You & Me, blending jazz and Jewish musical traditions.",
+    title: "Music & Live Videos | Udi Shlomo, Jazz Drummer",
+    description: "Listen to Udi Shlomo on Spotify, Bandcamp and Apple Music. Watch live quintet performances and videos from the album You & Me.",
     label: "Music",
     type: "CollectionPage",
   },
   concerts: {
     path: "concerts/",
-    title: "Concerts & Tour Dates | Udi Shlomo",
-    description: "Find Udi Shlomo's upcoming concerts and explore past performances. See live dates and venue details, and follow Udi Shlomo Music on Bandsintown for updates.",
+    title: "Concerts & Tour Dates | Udi Shlomo, Jazz Drummer",
+    description: "Find Udi Shlomo's upcoming concerts and past performances. See live dates and venues, and follow Udi Shlomo Music on Bandsintown.",
     label: "Concerts",
     type: "CollectionPage",
   },
   contact: {
     path: "contact/",
-    title: "Contact & Booking | Udi Shlomo",
-    description: "Contact Udi Shlomo for concert bookings, recording sessions and press enquiries. Find email and phone details for the drummer and composer in Trondheim, Norway.",
+    title: "Contact & Booking | Udi Shlomo, Jazz Drummer",
+    description: "Contact Udi Shlomo for concert bookings, recording sessions and press enquiries. Email and phone for the drummer and composer in Trondheim, Norway.",
     label: "Contact",
     type: "ContactPage",
   },
   epk: {
     path: "epk/",
-    title: "Electronic Press Kit (EPK) | Udi Shlomo",
-    description: "Explore Udi Shlomo's electronic press kit: artist biography, album and concert reviews, live videos, booking contact details and downloadable press materials.",
+    title: "Electronic Press Kit (EPK) | Udi Shlomo, Jazz Drummer",
+    description: "Udi Shlomo's electronic press kit: biography, album and concert reviews, live videos, booking contacts and downloadable press materials.",
     label: "Electronic press kit",
     type: "WebPage",
   },
@@ -60,6 +60,7 @@ export function pageMetadata(key: SeoPage): Metadata {
     width: 1200,
     height: 630,
     alt: "Udi Shlomo, jazz drummer, composer and arranger, standing between two cymbals",
+    type: "image/png",
   };
   return {
     title: { absolute: title },
@@ -77,7 +78,10 @@ export function pageMetadata(key: SeoPage): Metadata {
       },
     },
     openGraph: {
-      type: "website",
+      ...(key === "about"
+        ? { type: "profile" as const, firstName: "Udi", lastName: "Shlomo" }
+        : { type: "website" as const }),
+      ...(key === "contact" ? { emails: [site.email], phoneNumbers: [site.phoneDisplay] } : {}),
       locale: "en_GB",
       siteName: site.name,
       title,

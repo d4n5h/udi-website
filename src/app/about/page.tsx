@@ -23,7 +23,7 @@ export default function AboutPage() {
           sizes="100vw"
         />
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-end bg-[#14171f]/75 px-5 py-3 sm:px-8">
-          <h1 className="sr-only">About</h1>
+          <h1 className="sr-only">Biography and reviews</h1>
           <p className="text-[#f4f1ea]">{gallery[0].caption}</p>
         </div>
       </section>
