@@ -1,12 +1,12 @@
 import { spawnSync } from "node:child_process";
 
-// The workflow supplies the actual Pages path (also supports a custom domain).
+// Production is the custom domain at its root. Override both variables to build for another location.
 const result = spawnSync(process.execPath, ["node_modules/next/dist/bin/next", "build"], {
   stdio: "inherit",
   env: {
     ...process.env,
-    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH ?? "/udi-website",
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL ?? "https://d4n5h.github.io/udi-website/",
+    NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH ?? "",
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL ?? "https://udishlomomusic.com/",
   },
 });
 

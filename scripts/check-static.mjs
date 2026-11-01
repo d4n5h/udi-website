@@ -3,7 +3,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve("out");
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/udi-website";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const pages = ["", "about", "music", "concerts", "contact", "epk"];
 
 for (const page of pages) {

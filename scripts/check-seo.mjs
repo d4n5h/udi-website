@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 
-const site = `${(process.env.NEXT_PUBLIC_SITE_URL || "https://d4n5h.github.io/udi-website/").replace(/\/+$/, "")}/`;
+const site = `${(process.env.NEXT_PUBLIC_SITE_URL || "https://udishlomomusic.com/").replace(/\/+$/, "")}/`;
 const routes = ["", "about", "music", "concerts", "contact", "epk"];
 const titles = new Set();
 const descriptions = new Set();
