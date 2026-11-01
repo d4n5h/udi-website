@@ -50,7 +50,7 @@ For a domain root, set the base path to an empty string (use `$env:NEXT_PUBLIC_B
 
 ## Search and sharing
 
-Each page has its own title, description, canonical URL, Open Graph and Twitter card metadata. `src/lib/seo.ts` is the shared source. Structured data identifies the artist, website and each page; the press kit is linked from the footer. The sitemap includes all six public pages without invented modification dates. A 1200 × 630 social card is rendered from the existing artist photo at build time.
+Each page has its own title, description, canonical URL, Open Graph and Twitter card metadata. `src/lib/seo.ts` is the shared source. Structured data identifies the artist, website and each page; the press kit is linked from the footer. The sitemap includes all six public pages without invented modification dates. Each page gets its own 1200 × 630 JPEG share image, kept under 300 KB so Facebook and WhatsApp can show it.
 
 The favicon source is `public/icons/favicon.svg`. Run `node scripts/generate-icons.mjs` after editing it to regenerate the ICO and PNG sizes, including the Apple touch icon. The manifest supports browser bookmarks/home-screen icons; it does not add offline support. `npm run check:static` verifies the exported SEO tags, URLs, structured data and assets as part of deployment.
 

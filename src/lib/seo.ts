@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site-content";
+import { shareCards, shareImagePath, type ShareCard } from "@/lib/share-image";
 
 // Resolve relative to the site directory, preserving the GitHub Pages prefix.
 export function siteUrl(path = "") {
@@ -55,12 +56,13 @@ export type SeoPage = keyof typeof seoPages;
 
 export function pageMetadata(key: SeoPage): Metadata {
   const { path, title, description } = seoPages[key];
+  const card = shareCards[key as ShareCard];
   const image = {
-    url: siteUrl("social-card.png"),
+    url: siteUrl(shareImagePath(key)),
     width: 1200,
     height: 630,
-    alt: "Udi Shlomo, jazz drummer, composer and arranger, standing between two cymbals",
-    type: "image/png",
+    alt: card.alt,
+    type: "image/jpeg",
   };
   return {
     title: { absolute: title },

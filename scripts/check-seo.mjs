@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, statSync } from "node:fs";
+import sharp from "sharp";
 
 const site = `${(process.env.NEXT_PUBLIC_SITE_URL || "https://udishlomomusic.com/").replace(/\/+$/, "")}/`;
 const routes = ["", "about", "music", "concerts", "contact", "epk"];
@@ -37,11 +38,17 @@ for (const route of routes) {
   assert.equal(meta("twitter:title"), title);
   assert.equal(meta("twitter:description"), description);
   assert.equal(meta("twitter:card"), "summary_large_image");
-  assert.equal(meta("og:image"), new URL("social-card.png", site).href);
+  const card = `social/${route || "home"}.jpg`;
+  assert.equal(meta("og:image"), new URL(card, site).href);
   assert.equal(meta("twitter:image"), meta("og:image"));
   assert.equal(meta("og:image:width"), "1200");
   assert.equal(meta("og:image:height"), "630");
-  assert.equal(meta("og:image:type"), "image/png");
+  assert.equal(meta("og:image:type"), "image/jpeg");
+  const info = await sharp(`out/${card}`).metadata();
+  assert.equal(info.format, "jpeg", `${card}: must be a JPEG so chat apps show it`);
+  assert.equal(info.width, 1200);
+  assert.equal(info.height, 630);
+  assert.ok(statSync(`out/${card}`).size < 300 * 1024, `${card}: too large for WhatsApp`);
   assert.ok(meta("og:image:alt"));
   assert.equal(meta("og:type"), route === "about" ? "profile" : "website");
   if (route === "about") {
@@ -94,10 +101,6 @@ assert.equal(new URL(manifest.start_url, site).href, site);
 for (const icon of manifest.icons) {
   assert.ok(existsSync(`out/icons/${icon.src.split("/").at(-1)}`));
 }
-const image = readFileSync("out/social-card.png");
-assert.equal(image.subarray(1, 4).toString(), "PNG");
-assert.equal(image.readUInt32BE(16), 1200);
-assert.equal(image.readUInt32BE(20), 630);
 const favicon = readFileSync("out/favicon.ico");
 assert.equal(favicon.readUInt16LE(2), 1);
 assert.equal(favicon.readUInt16LE(4), 3);
