@@ -3,14 +3,12 @@
 import Image from "next/image";
 import { assetPath } from "@/lib/asset-path";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import type { Review } from "@/data/site-content";
 
 function quoted(quote: string) {
   return quote.startsWith("“") ? quote : `“${quote}”`;
 }
-
-const button =
-  "h-11 touch-manipulation px-4 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97]";
 
 const column = "relative z-10 col-start-2 px-5 sm:px-8";
 
@@ -40,6 +38,10 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-[2] col-span-full h-40 bg-linear-to-b from-[#111111] to-transparent sm:h-56 lg:h-72"
+      />
       <div className="relative col-span-full row-start-1 aspect-[3/2] w-full max-w-[calc((100svh-4.5rem)*1.5)] justify-self-center [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] lg:absolute lg:inset-y-0 lg:row-[1/-1] lg:left-1/2 lg:w-auto lg:max-w-full lg:-translate-x-1/2">
         <Image
           src={assetPath("/images/ostrava-live.jpg")}
@@ -52,26 +54,30 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
       </div>
 
       <h2
-        className={`${column} row-start-1 self-end pb-4 text-[1.65rem] leading-tight sm:pb-6 sm:text-display-2 lg:self-start lg:pt-[clamp(2.5rem,7vh,5rem)] lg:pb-0`}
+        className={`${column} row-start-1 flex items-center gap-2.5 self-end pb-4 text-3xl sm:pb-6 lg:self-start lg:pt-[clamp(2.5rem,7vh,5rem)] lg:pb-0`}
       >
+        <svg viewBox="0 0 24 24" className="size-6 shrink-0" aria-hidden="true">
+          <g
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          >
+            <path d="M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" />
+            <path d="M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" />
+          </g>
+        </svg>
         What they wrote
       </h2>
 
       <div className={`${column} row-start-2 flex items-center gap-3 pt-4 lg:pt-5`}>
-        <button
-          type="button"
-          onClick={() => step(-1)}
-          className={`${button} bg-[#f4f1ea] text-black`}
-        >
+        <Button type="button" size="sm" variant="light" onClick={() => step(-1)}>
           Previous
-        </button>
-        <button
-          type="button"
-          onClick={() => step(1)}
-          className={`${button} bg-primary text-primary-foreground`}
-        >
+        </Button>
+        <Button type="button" size="sm" onClick={() => step(1)}>
           Next
-        </button>
+        </Button>
         <p className="ml-2 tabular-nums">
           {index + 1} / {count}
         </p>

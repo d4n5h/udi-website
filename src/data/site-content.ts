@@ -43,11 +43,7 @@ export const bandsintown = {
 
 export const facebookPage = {
   href: "https://www.facebook.com/udishlomomusic/",
-  posts: [
-    "https://www.facebook.com/udishlomomusic/posts/pfbid0B4pXo3y1EFkMgB8KpSifca1HJ2c5SNBrpsCq5vR4WgZ17GpzuPEKrseNxCbQxpnMl",
-    "https://www.facebook.com/photo.php?fbid=1519048800231663",
-    "https://www.facebook.com/photo.php?fbid=1456873669782510",
-  ],
+  name: "Udi Shlomo Music",
 } as const;
 
 export const epkDownload =

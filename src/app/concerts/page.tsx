@@ -4,17 +4,9 @@ import { pageMetadata, siteUrl } from "@/lib/seo";
 import { PageStructuredData } from "@/components/seo/structured-data";
 import { ConcertDates } from "@/components/concerts/concert-dates";
 import { loadConcertDates } from "@/lib/bandsintown";
-import { bandsintown, reviews } from "@/data/site-content";
+import { bandsintown } from "@/data/site-content";
 
 export const metadata = pageMetadata("concerts");
-
-const [lead, ...more] = ["dupuis", "hauknes", "sykora"].flatMap((id) =>
-  reviews.filter((review) => review.id === id),
-);
-
-function quoted(quote: string) {
-  return quote.startsWith("“") ? quote : `“${quote}”`;
-}
 
 export default async function ConcertsPage() {
   const dates = await loadConcertDates();
@@ -74,68 +66,43 @@ export default async function ConcertsPage() {
 
       <ConcertDates initial={dates} />
 
-      {lead ? (
-        <section className="bg-card">
-          <div className="shell grid gap-10 py-16 sm:py-20 lg:grid-cols-12 lg:gap-6">
-            <blockquote className="border-t border-border pt-5 lg:col-span-6">
-              <p className="font-display text-3xl leading-tight tracking-[-0.02em] text-balance sm:text-4xl">
-                {quoted(lead.quote)}
-              </p>
-              <footer className="mt-4 text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">{lead.publication}</span>, {lead.author}
-              </footer>
-            </blockquote>
-            <div className="flex flex-col gap-8 lg:col-span-5 lg:col-start-8">
-              {more.map((review) => (
-                <blockquote key={review.id} className="border-t border-border pt-5">
-                  <p className="font-display text-lg leading-snug tracking-[-0.01em]">
-                    {quoted(review.quote)}
-                  </p>
-                  <footer className="mt-3 text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">{review.publication}</span>,{" "}
-                    {review.author}
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="shell grid gap-8 py-16 sm:py-20 lg:grid-cols-12 lg:gap-6">
-        <h2 className="text-3xl leading-tight lg:col-span-6">Hear it live</h2>
-        <ul className="border-b border-border lg:col-span-5 lg:col-start-8">
-          {ways.map((way) => {
-            const external = way.href.startsWith("http");
-            const Icon = external ? ArrowUpRight : ArrowRight;
-            const body = (
-              <>
-                <span>
-                  <span className="block">{way.label}</span>
-                  <span className="mt-0.5 block text-sm text-muted-foreground">{way.note}</span>
-                </span>
-                <Icon
-                  aria-hidden="true"
-                  className="size-4 shrink-0 text-muted-foreground transition-[translate,color] duration-200 ease-out group-hover:translate-x-0.5 group-hover:text-foreground"
-                />
-              </>
-            );
-            const className = "group flex items-center justify-between gap-6 border-t border-border py-4";
-            return (
-              <li key={way.label}>
-                {external ? (
-                  <a href={way.href} target="_blank" rel="noopener noreferrer" className={className}>
-                    {body}
-                  </a>
-                ) : (
-                  <Link href={way.href} className={className}>
-                    {body}
-                  </Link>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+      <section className="bg-card">
+        <div className="shell grid gap-8 py-16 sm:py-20 lg:grid-cols-12 lg:gap-6">
+          <h2 className="text-3xl leading-tight lg:col-span-6">Hear it live</h2>
+          <ul className="border-b border-border lg:col-span-5 lg:col-start-8">
+            {ways.map((way) => {
+              const external = way.href.startsWith("http");
+              const Icon = external ? ArrowUpRight : ArrowRight;
+              const body = (
+                <>
+                  <span>
+                    <span className="block">{way.label}</span>
+                    <span className="mt-0.5 block text-sm text-muted-foreground">{way.note}</span>
+                  </span>
+                  <Icon
+                    aria-hidden="true"
+                    className="size-4 shrink-0 text-muted-foreground transition-[translate,color] duration-200 ease-out group-hover:translate-x-0.5 group-hover:text-foreground"
+                  />
+                </>
+              );
+              const className =
+                "group flex items-center justify-between gap-6 border-t border-border py-4";
+              return (
+                <li key={way.label}>
+                  {external ? (
+                    <a href={way.href} target="_blank" rel="noopener noreferrer" className={className}>
+                      {body}
+                    </a>
+                  ) : (
+                    <Link href={way.href} className={className}>
+                      {body}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </section>
     </>
   );
