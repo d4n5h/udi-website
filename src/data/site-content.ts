@@ -37,17 +37,8 @@ export const spotify = {
 } as const;
 
 export const bandsintown = {
-  script: "https://widget.bandsintown.com/main.min.js",
   artistName: "Udi Shlomo Music",
-  textColor: "#F4F1EA",
-  linkColor: "#2C5566",
-  linkTextColor: "#F4F1EA",
-  backgroundColor: "#1A1A1A",
-  popupBackgroundColor: "#FFFFFF",
-  displayLocalDates: "false",
-  displayPastDates: "true",
-  displayLimit: "15",
-  autoStyle: "false",
+  pageUrl: "https://www.bandsintown.com/a/15536003",
 } as const;
 
 export const facebookPage = {

@@ -195,38 +195,3 @@
 .hover-lift:active {
   transform: scale(0.97);
 }
-
-.bit-widget,
-.bit-widget-container {
-  background: #1a1a1a !important;
-  color: #f4f1ea !important;
-  border-radius: 0 !important;
-}
-
-.bit-widget .bit-nav-bar,
-.bit-widget .bit-event,
-.bit-widget .bit-event-list,
-.bit-widget .bit-events-container,
-.bit-widget .bit-no-dates-container,
-.bit-widget .bit-follow-section-background {
-  background: #1a1a1a !important;
-  color: #f4f1ea !important;
-}
-
-.bit-widget .bit-event-list-title,
-.bit-widget .bit-no-dates-title,
-.bit-widget .bit-venue,
-.bit-widget .bit-location,
-.bit-widget a {
-  color: #f4f1ea !important;
-}
-
-.bit-widget .bit-button,
-.bit-widget .bit-track-button,
-.bit-widget .bit-rsvp-button,
-.bit-widget .bit-offers {
-  background: #2c5566 !important;
-  color: #f4f1ea !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-}
