@@ -17,6 +17,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+function isCurrent(pathname: string, href: string) {
+  return pathname.replace(/\/+$/, "") === href.replace(/\/+$/, "");
+}
+
 function NavLink({
   href,
   label,
@@ -27,7 +31,7 @@ function NavLink({
   external?: boolean;
 }) {
   const pathname = usePathname();
-  const current = !external && pathname === href;
+  const current = !external && isCurrent(pathname, href);
   const className = `text-base transition-[color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${
     current ? "text-primary" : "text-foreground hover:text-primary"
   }`;
@@ -44,6 +48,32 @@ function NavLink({
     <Link href={href} aria-current={current ? "page" : undefined} className={className}>
       {label}
     </Link>
+  );
+}
+
+function MobileNav() {
+  const pathname = usePathname();
+  return (
+    <nav aria-label="Mobile" className="flex flex-col gap-5 px-4 text-2xl">
+      {nav.map((item) => {
+        const external = "external" in item && item.external;
+        const current = !external && isCurrent(pathname, item.href);
+        const className = current ? "text-primary" : undefined;
+        return (
+          <SheetClose asChild key={item.href}>
+            {external ? (
+              <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+                {item.label}
+              </a>
+            ) : (
+              <Link href={item.href} aria-current={current ? "page" : undefined} className={className}>
+                {item.label}
+              </Link>
+            )}
+          </SheetClose>
+        );
+      })}
+    </nav>
   );
 }
 
@@ -82,21 +112,7 @@ export function SiteHeader() {
             <SheetHeader>
               <SheetTitle className="font-display text-3xl">Udi Shlomo</SheetTitle>
             </SheetHeader>
-            <nav aria-label="Mobile" className="flex flex-col gap-5 px-4 text-2xl">
-              {nav.map((item) =>
-                "external" in item && item.external ? (
-                  <SheetClose asChild key={item.href}>
-                    <a href={item.href} target="_blank" rel="noopener noreferrer">
-                      {item.label}
-                    </a>
-                  </SheetClose>
-                ) : (
-                  <SheetClose asChild key={item.href}>
-                    <Link href={item.href}>{item.label}</Link>
-                  </SheetClose>
-                ),
-              )}
-            </nav>
+            <MobileNav />
             <SocialLinks className="px-2 pt-6" />
           </SheetContent>
         </Sheet>
