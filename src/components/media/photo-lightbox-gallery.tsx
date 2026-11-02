@@ -23,7 +23,7 @@ export function PhotoLightboxGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <ul className="grid grid-cols-2 gap-x-3 gap-y-6 lg:grid-cols-4">
         {photos.map((item, itemIndex) => (
           <li key={item.src}>
             <button
@@ -31,12 +31,12 @@ export function PhotoLightboxGallery({ photos }: { photos: Photo[] }) {
               onClick={() => setIndex(itemIndex)}
               className="group block w-full text-left transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
-              <span className="relative block aspect-[4/3] overflow-hidden bg-secondary">
+              <span className="relative block aspect-[3/2] overflow-hidden bg-secondary">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  sizes="(min-width: 1024px) 28vw, (min-width: 640px) 33vw, 50vw"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
                   className={`object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.03] ${
                     item.height > item.width ? "object-[center_18%]" : "object-center"
                   }`}

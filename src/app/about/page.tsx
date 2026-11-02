@@ -8,63 +8,55 @@ import { biography, gallery, reviews, venues } from "@/data/site-content";
 export const metadata = pageMetadata("about");
 
 const aboutReviews = reviews.filter((review) => review.about);
+const [portrait, ...photos] = gallery;
+const venuesLead = biography[2].slice(0, biography[2].indexOf(":") + 1);
 
 export default function AboutPage() {
   return (
     <>
       <PageStructuredData page="about" />
-      <section className="relative h-80 sm:h-96">
-        <Image
-          src={gallery[0].src}
-          alt={gallery[0].alt}
-          fill
-          preload
-          className="object-cover object-[center_10%]"
-          sizes="100vw"
-        />
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-end bg-[#14171f]/75 px-5 py-3 sm:px-8">
-          <h1 className="sr-only">Biography and reviews</h1>
-          <p className="text-[#f4f1ea]">{gallery[0].caption}</p>
-        </div>
-      </section>
+      <section className="shell grid gap-10 pt-6 pb-20 sm:pt-10 sm:pb-28 md:grid-cols-[min(40%,calc((100svh-12rem)*2/3))_1fr] md:gap-x-12 md:pt-16 lg:gap-x-20">
+        <h1 className="sr-only">Biography and reviews</h1>
+        <figure className="max-w-md md:sticky md:top-24 md:max-w-none md:self-start">
+          <Image
+            src={portrait.src}
+            alt={portrait.alt}
+            width={portrait.width}
+            height={portrait.height}
+            preload
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="h-auto w-full"
+          />
+          <figcaption className="mt-3 text-sm text-muted-foreground">{portrait.caption}</figcaption>
+        </figure>
 
-      <section className="bg-card">
-        <div className="shell py-16 sm:py-24">
-          <p className="text-statement max-w-4xl">{biography[0]}</p>
-          <div className="mt-10 grid gap-8 lg:mt-14 lg:grid-cols-2 lg:gap-16">
-            {biography.slice(1).map((paragraph) => (
-              <p key={paragraph.slice(0, 24)} className="max-w-xl text-lg leading-relaxed">
-                {paragraph}
-              </p>
+        <div className="max-w-3xl">
+          <p className="text-statement">{biography[0]}</p>
+          <p className="mt-8 max-w-[65ch] text-lg leading-relaxed">{biography[1]}</p>
+          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed">{venuesLead}</p>
+          <ul className="mt-6 grid grid-cols-2 gap-x-4 text-[0.9375rem] leading-snug sm:gap-x-6 sm:text-base">
+            {venues.map((venue) => (
+              <li key={venue} className="border-t border-border py-3">
+                {venue}
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="shell py-20 sm:py-28">
-        <h2 className="text-display-2 max-w-[14ch]">Rooms and festivals</h2>
-        <ul className="mt-10 grid gap-x-10 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-          {venues.map((venue) => (
-            <li key={venue} className="text-xl">
-              {venue}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="shell pb-20 sm:pb-28">
-        <h2 className="text-display-2 max-w-[12ch]">On the stand</h2>
-        <div className="mt-10">
-          <PhotoLightboxGallery photos={gallery} />
+          </ul>
         </div>
       </section>
 
       <section className="bg-card">
         <div className="shell py-20 sm:py-28">
-          <h2 className="text-display-2">Reviews</h2>
-          <div className="mt-12">
-            <ReviewList reviews={aboutReviews} compact />
+          <h2 className="text-display-2">On the stand</h2>
+          <div className="mt-10">
+            <PhotoLightboxGallery photos={photos} />
           </div>
+        </div>
+      </section>
+
+      <section className="shell py-20 sm:py-28">
+        <h2 className="text-display-2">Reviews</h2>
+        <div className="mt-12">
+          <ReviewList reviews={aboutReviews} compact />
         </div>
       </section>
     </>

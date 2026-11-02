@@ -39,7 +39,7 @@ export function YouTubeEmbed({
               className="object-cover"
               preload={priority}
             />
-            <span className="absolute inset-0 bg-[#14171f]/25 transition-opacity duration-200 group-hover:bg-[#14171f]/10" />
+            <span className="absolute inset-0 bg-black/25 transition-opacity duration-200 group-hover:bg-black/10" />
             <span className="absolute top-1/2 left-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center bg-primary text-primary-foreground transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-active:scale-95">
               <svg viewBox="0 0 24 24" className="ml-1 size-7" aria-hidden="true">
                 <path fill="currentColor" d="M8 5.5v13l11-6.5L8 5.5Z" />

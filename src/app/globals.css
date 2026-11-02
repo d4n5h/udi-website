@@ -52,38 +52,38 @@
 }
 
 :root {
-  --background: #14171f;
+  --background: #111111;
   --foreground: #f4f1ea;
-  --card: #1c202b;
+  --card: #1a1a1a;
   --card-foreground: #f4f1ea;
-  --popover: #1c202b;
+  --popover: #1a1a1a;
   --popover-foreground: #f4f1ea;
-  --primary: #83623d;
+  --primary: #2c5566;
   --primary-foreground: #f4f1ea;
-  --secondary: #252a36;
+  --secondary: #2a2a2a;
   --secondary-foreground: #f4f1ea;
-  --muted: #252a36;
+  --muted: #2a2a2a;
   --muted-foreground: #aba69b;
-  --accent: #252a36;
+  --accent: #2a2a2a;
   --accent-foreground: #f4f1ea;
   --destructive: #e57373;
-  --border: #252a36;
-  --input: #252a36;
-  --ring: #83623d;
-  --chart-1: #83623d;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: #2c5566;
+  --chart-1: #2c5566;
   --chart-2: #aba69b;
   --chart-3: #4487dd;
   --chart-4: #f4f1ea;
-  --chart-5: #1c202b;
+  --chart-5: #1a1a1a;
   --radius: 0px;
-  --sidebar: #1c202b;
+  --sidebar: #1a1a1a;
   --sidebar-foreground: #f4f1ea;
-  --sidebar-primary: #83623d;
+  --sidebar-primary: #2c5566;
   --sidebar-primary-foreground: #f4f1ea;
-  --sidebar-accent: #252a36;
+  --sidebar-accent: #2a2a2a;
   --sidebar-accent-foreground: #f4f1ea;
-  --sidebar-border: #252a36;
-  --sidebar-ring: #83623d;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #2c5566;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   color-scheme: dark;
@@ -107,7 +107,7 @@
   }
 
   ::selection {
-    background: #83623d;
+    background: #2c5566;
     color: #f4f1ea;
   }
 
@@ -198,7 +198,7 @@
 
 .bit-widget,
 .bit-widget-container {
-  background: #1c202b !important;
+  background: #1a1a1a !important;
   color: #f4f1ea !important;
   border-radius: 0 !important;
 }
@@ -209,7 +209,7 @@
 .bit-widget .bit-events-container,
 .bit-widget .bit-no-dates-container,
 .bit-widget .bit-follow-section-background {
-  background: #1c202b !important;
+  background: #1a1a1a !important;
   color: #f4f1ea !important;
 }
 
@@ -225,7 +225,7 @@
 .bit-widget .bit-track-button,
 .bit-widget .bit-rsvp-button,
 .bit-widget .bit-offers {
-  background: #83623d !important;
+  background: #2c5566 !important;
   color: #f4f1ea !important;
   border: 0 !important;
   border-radius: 0 !important;

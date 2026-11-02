@@ -5,8 +5,9 @@ import Link from "next/link";
 import { QuoteCarousel } from "@/components/home/quote-carousel";
 import { FacebookPageEmbed } from "@/components/media/facebook-page-embed";
 import { YouTubeEmbed } from "@/components/media/youtube-embed";
+import { PhotoHero } from "@/components/photo-hero";
 import { Button } from "@/components/ui/button";
-import { gallery, heroPhoto, reviews, videos } from "@/data/site-content";
+import { gallery, reviews, videos } from "@/data/site-content";
 
 export const metadata = pageMetadata("home");
 
@@ -25,35 +26,11 @@ export default function HomePage() {
   return (
     <div className="overflow-x-clip">
       <PageStructuredData page="home" />
-      <section className="relative min-h-[calc(100svh-4.5rem)] overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 right-[-6.67%] left-0">
-          <Image
-            src={heroPhoto.src}
-            alt={heroPhoto.alt}
-            fill
-            preload
-            sizes="107vw"
-            className="object-cover object-[46.875%_40%]"
-          />
-        </div>
-        <div className="relative z-10 flex min-h-[calc(100svh-4.5rem)] flex-col justify-end p-5 pb-14 sm:p-8 sm:pb-16">
-          <h1 className="font-sans text-4xl font-medium leading-tight tracking-normal text-[#f4f1ea] sm:text-5xl">
-            Udi Shlomo
-          </h1>
-          <p className="mt-3 max-w-xl text-lg text-[#f4f1ea] sm:text-xl">
-            Drummer, composer and arranger, based in Trondheim.
-          </p>
-          <p className="mt-2 text-[#f4f1ea]">{heroPhoto.caption}</p>
-        </div>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 160"
-          preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-12 w-full sm:h-16"
-        >
-          <path fill="#050503" d="M0 48Q720 150 1440 48V160H0Z" />
-        </svg>
-      </section>
+      <PhotoHero
+        title="Udi Shlomo"
+        subtitle="Drummer, composer and arranger, based in Trondheim."
+        wave="#050503"
+      />
 
       {ferell ? (
         <section className="relative bg-[#050503] text-white selection:bg-white selection:text-[#050503]">
@@ -111,7 +88,7 @@ export default function HomePage() {
             preserveAspectRatio="none"
             className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-16 w-full sm:h-20 lg:h-24"
           >
-            <path d="M0 130Q720 50 1440 130V160H0Z" fill="#14171f" />
+            <path d="M0 130Q720 50 1440 130V160H0Z" fill="#111111" />
           </svg>
         </section>
       ) : null}

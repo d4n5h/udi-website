@@ -79,7 +79,7 @@ function MobileNav() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 bg-background">
+    <header className="sticky top-0 z-40 bg-black/85 backdrop-blur-md">
       <div className="shell flex h-[4.5rem] items-center justify-between gap-6">
         <Link href="/" className="shrink-0 active:scale-[0.97] transition-transform duration-150">
           <Image

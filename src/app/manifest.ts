@@ -14,8 +14,8 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: assetPath("/"),
     scope: assetPath("/"),
     display: "browser",
-    background_color: "#14171f",
-    theme_color: "#14171f",
+    background_color: "#111111",
+    theme_color: "#111111",
     icons: [192, 512].map((size) => ({
       src: assetPath(`/icons/icon-${size}.png`),
       sizes: `${size}x${size}`,

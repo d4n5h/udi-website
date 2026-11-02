@@ -65,7 +65,7 @@ export async function renderShareImage(key: ShareCard) {
     readFile(path.join(process.cwd(), "assets/fonts/jakarta-latin.ttf")),
   ]);
   const png = new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", background: "#14171f" }}>
+    <div style={{ width: "100%", height: "100%", display: "flex", background: "#111111" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`data:image/jpeg;base64,${photo.toString("base64")}`}
@@ -81,11 +81,11 @@ export async function renderShareImage(key: ShareCard) {
           bottom: 44,
           display: "flex",
           flexDirection: "column",
-          background: "rgba(20,23,31,0.88)",
+          background: "rgba(0,0,0,0.88)",
           padding: "26px 34px 28px",
         }}
       >
-        <div style={{ display: "flex", fontFamily: "Jakarta", fontSize: 22, letterSpacing: 3, color: "#e3c49b", textTransform: "uppercase" }}>
+        <div style={{ display: "flex", fontFamily: "Jakarta", fontSize: 22, letterSpacing: 3, color: "#8eb4c4", textTransform: "uppercase" }}>
           {card.kicker}
         </div>
         <div style={{ display: "flex", fontFamily: "Fraunces", fontWeight: 600, fontSize: 76, lineHeight: 1, color: "#f4f1ea", marginTop: 10 }}>

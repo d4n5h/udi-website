@@ -4,17 +4,19 @@ function quoted(quote: string) {
   return quote.startsWith("“") ? quote : `“${quote}”`;
 }
 
-const compactSpans = [
-  "md:col-span-2 lg:col-span-6",
-  "lg:col-span-3",
-  "lg:col-span-3",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-];
+const link =
+  "text-foreground underline decoration-primary decoration-2 underline-offset-4 transition-colors hover:decoration-foreground";
+
+function ReadLink({ href }: { href?: string }) {
+  return href ? (
+    <>
+      {" · "}
+      <a href={href} target="_blank" rel="noopener noreferrer" className={link}>
+        Read the review
+      </a>
+    </>
+  ) : null;
+}
 
 export function ReviewList({
   reviews,
@@ -28,17 +30,11 @@ export function ReviewList({
       <div className="flex flex-col gap-14">
         {reviews.map((review) => (
           <blockquote key={review.id}>
-            <p className="text-quote max-w-3xl">{quoted(review.quote)}</p>
-            <footer className="mt-4 flex flex-wrap items-baseline gap-x-3 text-muted-foreground">
-              <span>
-                {review.author}
-                {review.author !== review.publication ? `, ${review.publication}` : ""}
-              </span>
-              {review.href ? (
-                <a href={review.href} target="_blank" rel="noopener noreferrer" className="text-primary">
-                  Read the review
-                </a>
-              ) : null}
+            <p className="text-quote">{quoted(review.quote)}</p>
+            <footer className="mt-5 text-muted-foreground">
+              {review.author}
+              {review.author !== review.publication ? `, ${review.publication}` : ""}
+              <ReadLink href={review.href} />
             </footer>
           </blockquote>
         ))}
@@ -46,35 +42,23 @@ export function ReviewList({
     );
   }
 
-  const ordered = [...reviews].sort((a, b) => b.quote.length - a.quote.length);
-
   return (
-    <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-6">
-      {ordered.map((review, index) => (
-        <blockquote
-          key={review.id}
-          className={`flex flex-col justify-between bg-background p-6 ${
-            compactSpans[index] ?? "lg:col-span-2"
-          }`}
-        >
-          <p className="text-sm leading-relaxed text-foreground">
+    <div className="gap-x-10 sm:columns-2 lg:columns-3">
+      {reviews.map((review) => (
+        <blockquote key={review.id} className="mb-12 break-inside-avoid border-t border-border pt-6">
+          <p
+            className={
+              review.quote.length < 160
+                ? "font-display text-2xl leading-snug tracking-[-0.02em]"
+                : "leading-relaxed"
+            }
+          >
             {quoted(review.quote)}
           </p>
-          <footer className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-sm text-muted-foreground">
-            <span>
-              <strong className="font-medium text-primary">{review.publication}</strong>
-              {review.author !== review.publication ? ` · ${review.author}` : ""}
-            </span>
-            {review.href ? (
-              <a
-                href={review.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground underline underline-offset-4 hover:text-primary"
-              >
-                Read the review
-              </a>
-            ) : null}
+          <footer className="mt-4 text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">{review.publication}</span>
+            {review.author !== review.publication ? `, ${review.author}` : ""}
+            <ReadLink href={review.href} />
           </footer>
         </blockquote>
       ))}

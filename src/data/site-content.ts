@@ -40,9 +40,9 @@ export const bandsintown = {
   script: "https://widget.bandsintown.com/main.min.js",
   artistName: "Udi Shlomo Music",
   textColor: "#F4F1EA",
-  linkColor: "#83623D",
+  linkColor: "#2C5566",
   linkTextColor: "#F4F1EA",
-  backgroundColor: "#1C202B",
+  backgroundColor: "#1A1A1A",
   popupBackgroundColor: "#FFFFFF",
   displayLocalDates: "false",
   displayPastDates: "true",
@@ -65,7 +65,7 @@ export const epkDownload =
 export const biography = [
   "Udi Shlomo is a drummer, composer and arranger, living and active in Norway (Trondheim) since 2010, originally from Kibbutz Nahshon, with roots from Iraq, Poland and former Czechoslovakia.",
   "This diverse background is being expressed in Shlomo’s music, that combines original compositions that are inspired by memories, pictures, stories and nature from his early life in the kibbutz, together with new arrangements of traditional Jewish music, and colored by the experience of life in Norway, away from the root, in the diaspora. This blend of cultures creates what today is called “World Jazz”",
-  "Shlomo preforms and tours frequently both as a bandleader and a sideman, and has played at renowned venues such as: Pizzaexpress Jazz Club, Ankara Jazz Festival, Sibiu Jazz Festival, Oslo Jazz Festival, Trondheim Jazz Festival, Jerusalem Jazz Festival, Tel Aviv Jazz Festival, Usadba Jazz Festival, Blue Note Poznan, Delhi Jazz Festival, Jazz Dock, Jazzinec International Music Festival, Tangente Jazz+, Jazzfest Brno, Jazz Club Unterfahrt",
+  "Shlomo performs and tours frequently both as a bandleader and a sideman, and has played at renowned venues such as: Pizzaexpress Jazz Club, Ankara Jazz Festival, Sibiu Jazz Festival, Oslo Jazz Festival, Trondheim Jazz Festival, Jerusalem Jazz Festival, Tel Aviv Jazz Festival, Usadba Jazz Festival, Blue Note Poznan, Delhi Jazz Festival, Jazz Dock, Jazzinec International Music Festival, Tangente Jazz+, Jazzfest Brno, Jazz Club Unterfahrt",
 ] as const;
 
 export const venues = [
