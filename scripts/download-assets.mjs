@@ -100,3 +100,5 @@ async function downloadOne(url, destination) {
 for (const [url, destination] of assets) {
   await downloadOne(url, destination);
 }
+
+await import("./optimize-images.mjs");

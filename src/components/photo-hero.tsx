@@ -18,8 +18,8 @@ export function PhotoHero({
         <Image
           src={heroPhoto.src}
           alt={heroPhoto.alt}
-          width={2560}
-          height={1440}
+          width={heroPhoto.width}
+          height={heroPhoto.height}
           preload
           sizes="100vw"
         />

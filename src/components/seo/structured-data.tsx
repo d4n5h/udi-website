@@ -62,8 +62,8 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
         inLanguage: "en",
         isPartOf: { "@id": siteUrl("#website") },
         about: { "@id": artist },
-        ...(page === "home" || page === "epk" ? { image: siteUrl("images/hero-udi-wide.jpg") } : {}),
-        ...(page === "about" ? { image: siteUrl("images/gallery/udi-transform.jpg") } : {}),
+        ...(page === "home" || page === "epk" ? { image: siteUrl("images/hero-udi-wide.webp") } : {}),
+        ...(page === "about" ? { image: siteUrl("images/gallery/udi-transform.webp") } : {}),
         ...(page === "about"
           ? {
               mainEntity: {
@@ -72,7 +72,7 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
                 name: site.name,
                 description: biography[0],
                 jobTitle: ["Drummer", "Composer", "Arranger"],
-                image: siteUrl("images/gallery/udi-transform.jpg"),
+                image: siteUrl("images/gallery/udi-transform.webp"),
                 homeLocation: { "@type": "Place", name: "Trondheim" },
                 sameAs: socials.map(({ href }) => href),
                 url: siteUrl(),
@@ -106,7 +106,7 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
               name: site.name,
               description: "Drummer, composer and arranger, based in Trondheim.",
               jobTitle: ["Drummer", "Composer", "Arranger"],
-              image: siteUrl("images/hero-udi-wide.jpg"),
+              image: siteUrl("images/hero-udi-wide.webp"),
               homeLocation: { "@type": "Place", name: "Trondheim" },
             },
             {
@@ -115,7 +115,7 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
               name: site.name,
               url: siteUrl(),
               genre: "World Jazz",
-              image: siteUrl("images/hero-udi-wide.jpg"),
+              image: siteUrl("images/hero-udi-wide.webp"),
               sameAs: socials.map(({ href }) => href),
             },
           ]

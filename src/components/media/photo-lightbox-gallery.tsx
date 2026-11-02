@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { Photo } from "@/data/site-content";
 import {
   Carousel,
@@ -9,6 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import {
   Dialog,
@@ -19,7 +20,23 @@ import {
 
 export function PhotoLightboxGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState<number | null>(null);
+  const [shown, setShown] = useState<number[]>([]);
   const photo = index === null ? null : photos[index];
+
+  const track = useCallback((api: CarouselApi) => {
+    if (!api) return;
+    const mark = () => {
+      const current = api.selectedScrollSnap();
+      setShown((items) => (items.includes(current) ? items : [...items, current]));
+    };
+    mark();
+    api.on("select", mark);
+  }, []);
+
+  function open(itemIndex: number) {
+    setShown([itemIndex]);
+    setIndex(itemIndex);
+  }
 
   return (
     <>
@@ -28,12 +45,12 @@ export function PhotoLightboxGallery({ photos }: { photos: Photo[] }) {
           <li key={item.src}>
             <button
               type="button"
-              onClick={() => setIndex(itemIndex)}
+              onClick={() => open(itemIndex)}
               className="group block w-full text-left transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               <span className="relative block aspect-[3/2] overflow-hidden bg-secondary">
                 <Image
-                  src={item.src}
+                  src={item.thumb ?? item.src}
                   alt={item.alt}
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
@@ -61,19 +78,28 @@ export function PhotoLightboxGallery({ photos }: { photos: Photo[] }) {
               </DialogDescription>
               <Carousel
                 key={index}
+                setApi={track}
                 opts={{ startIndex: index, loop: true }}
                 className="w-full"
               >
                 <CarouselContent>
-                  {photos.map((item) => (
+                  {photos.map((item, itemIndex) => (
                     <CarouselItem key={item.src}>
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        width={item.width}
-                        height={item.height}
-                        className="mx-auto h-auto max-h-[72vh] w-auto max-w-full"
-                      />
+                      {shown.includes(itemIndex) ? (
+                        <Image
+                          src={item.src}
+                          alt={item.alt}
+                          width={item.width}
+                          height={item.height}
+                          sizes="(min-width: 640px) 64rem, 100vw"
+                          className="mx-auto h-auto max-h-[72vh] w-auto max-w-full"
+                        />
+                      ) : (
+                        <div
+                          className="mx-auto w-full max-w-full bg-secondary"
+                          style={{ aspectRatio: `${item.width} / ${item.height}`, maxHeight: "72vh" }}
+                        />
+                      )}
                       <p className="mt-3">{item.caption}</p>
                     </CarouselItem>
                   ))}

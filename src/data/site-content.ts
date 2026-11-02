@@ -192,6 +192,7 @@ export const reviews: Review[] = [
 
 export type Photo = {
   src: string;
+  thumb?: string;
   width: number;
   height: number;
   alt: string;
@@ -199,72 +200,80 @@ export type Photo = {
 };
 
 export const heroPhoto: Photo = {
-  src: assetPath("/images/hero-udi-wide.jpg"),
-  width: 2560,
-  height: 1440,
+  src: assetPath("/images/hero-udi-wide.webp"),
+  width: 2200,
+  height: 1238,
   alt: "Udi Shlomo standing between two cymbals",
   caption: "Photograph by Bjørn Ánte Røe",
 };
 
 export const gallery: Photo[] = [
   {
-    src: assetPath("/images/gallery/udi-transform.jpg"),
-    width: 1365,
-    height: 2048,
+    src: assetPath("/images/gallery/udi-transform.webp"),
+    width: 933,
+    height: 1400,
     alt: "Udi Shlomo playing drums at Trondheim Jazz Festival, a Transform bass drum in front of him",
     caption: "Trondheim Jazz Festival. Photograph by Javad Montazeri, 2023.",
   },
   {
-    src: assetPath("/images/gallery/dsc4284.jpg"),
+    src: assetPath("/images/gallery/dsc4284.webp"),
+    thumb: assetPath("/images/gallery/thumbs/dsc4284.webp"),
     width: 1000,
     height: 667,
     alt: "Udi Shlomo Quintet taking a bow on stage at Jazzfest Brno",
     caption: "Jazzfest Brno.",
   },
   {
-    src: assetPath("/images/gallery/ostrava.jpg"),
-    width: 1953,
-    height: 1302,
+    src: assetPath("/images/gallery/ostrava.webp"),
+    thumb: assetPath("/images/gallery/thumbs/ostrava.webp"),
+    width: 1600,
+    height: 1067,
     alt: "Udi Shlomo playing a ride cymbal under blue stage light",
     caption: "Ostrava.",
   },
   {
-    src: assetPath("/images/gallery/dsc4253.jpg"),
+    src: assetPath("/images/gallery/dsc4253.webp"),
+    thumb: assetPath("/images/gallery/thumbs/dsc4253.webp"),
     width: 1000,
     height: 667,
     alt: "Udi Shlomo Quintet performing at Jazzfest Brno, with trumpet, saxophone, bass, piano and drums",
     caption: "Jazzfest Brno.",
   },
   {
-    src: assetPath("/images/gallery/dsc4267.jpg"),
+    src: assetPath("/images/gallery/dsc4267.webp"),
+    thumb: assetPath("/images/gallery/thumbs/dsc4267.webp"),
     width: 1000,
     height: 667,
     alt: "Trumpet, bass, saxophone and drums of the Udi Shlomo Quintet at Jazzfest Brno",
     caption: "Jazzfest Brno.",
   },
   {
-    src: assetPath("/images/gallery/dsc4126.jpg"),
+    src: assetPath("/images/gallery/dsc4126.webp"),
+    thumb: assetPath("/images/gallery/thumbs/dsc4126.webp"),
     width: 1000,
     height: 667,
     alt: "Udi Shlomo at the drums with the quintet under red stage lights",
     caption: "Live with the quintet.",
   },
   {
-    src: assetPath("/images/gallery/mikaela-canborn.jpg"),
+    src: assetPath("/images/gallery/mikaela-canborn.webp"),
+    thumb: assetPath("/images/gallery/thumbs/mikaela-canborn.webp"),
     width: 856,
     height: 570,
     alt: "Udi Shlomo smiling behind a drum kit",
     caption: "Photograph by Mikaela Canborn.",
   },
   {
-    src: assetPath("/images/gallery/trondheim-jazzfest.jpg"),
+    src: assetPath("/images/gallery/trondheim-jazzfest.webp"),
+    thumb: assetPath("/images/gallery/thumbs/trondheim-jazzfest.webp"),
     width: 1536,
     height: 1024,
     alt: "Udi Shlomo in a dark suit playing drums at Trondheim Jazz Festival",
     caption: "Trondheim Jazz Festival. Photograph by Thor Egil Leirtø, 2021.",
   },
   {
-    src: assetPath("/images/gallery/img-20230420.jpg"),
+    src: assetPath("/images/gallery/img-20230420.webp"),
+    thumb: assetPath("/images/gallery/thumbs/img-20230420.webp"),
     width: 1024,
     height: 768,
     alt: "Udi Shlomo Quintet playing for a seated audience at Jazz Club Unterfahrt",
@@ -274,8 +283,8 @@ export const gallery: Photo[] = [
 
 export const metrumPhoto: Photo = {
   src: assetPath("/images/gallery/metrum-jazz-club.webp"),
-  width: 1125,
-  height: 1526,
+  width: 885,
+  height: 1200,
   alt: "Udi Shlomo between two cymbals",
   caption: "Udi Shlomo.",
 };

@@ -44,7 +44,7 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
       />
       <div className="relative col-span-full row-start-1 aspect-[3/2] w-full max-w-[calc((100svh-4.5rem)*1.5)] justify-self-center [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] lg:absolute lg:inset-y-0 lg:row-[1/-1] lg:left-1/2 lg:w-auto lg:max-w-full lg:-translate-x-1/2">
         <Image
-          src={assetPath("/images/ostrava-live.jpg")}
+          src={assetPath("/images/ostrava-live.webp")}
           alt="Udi Shlomo playing a ride cymbal under blue stage light"
           fill
           sizes="100vw"

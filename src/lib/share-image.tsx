@@ -8,42 +8,42 @@ const height = 630;
 
 export const shareCards = {
   home: {
-    photo: "hero-udi-wide.jpg",
+    photo: "hero-udi-wide.webp",
     position: "center 30%",
     kicker: "World jazz",
     line: "Drummer, composer and arranger",
     alt: "Udi Shlomo, jazz drummer, composer and arranger, standing between two cymbals",
   },
   about: {
-    photo: "hero-udi-wide.jpg",
+    photo: "hero-udi-wide.webp",
     position: "center 30%",
     kicker: "Biography",
     line: "From Kibbutz Nahshon to Trondheim",
     alt: "Udi Shlomo, jazz drummer, composer and arranger, standing between two cymbals",
   },
   music: {
-    photo: "ostrava-live.jpg",
+    photo: "ostrava-live.webp",
     position: "62% center",
     kicker: "Music",
     line: "Live video and recordings",
     alt: "Udi Shlomo playing a ride cymbal under blue stage light",
   },
   concerts: {
-    photo: "gallery/trondheim-jazzfest.jpg",
+    photo: "gallery/trondheim-jazzfest.webp",
     position: "center 40%",
     kicker: "Concerts",
     line: "Tour dates",
     alt: "Udi Shlomo playing drums in a dark suit at Trondheim Jazz Festival",
   },
   contact: {
-    photo: "hero-udi-wide.jpg",
+    photo: "hero-udi-wide.webp",
     position: "center 30%",
     kicker: "Booking",
     line: "Concerts, recordings and press",
     alt: "Udi Shlomo, jazz drummer, composer and arranger, standing between two cymbals",
   },
   epk: {
-    photo: "hero-udi-wide.jpg",
+    photo: "hero-udi-wide.webp",
     position: "center 30%",
     kicker: "Press kit",
     line: "Biography, reviews and live video",
@@ -59,11 +59,12 @@ export function shareImagePath(key: ShareCard) {
 
 export async function renderShareImage(key: ShareCard) {
   const card = shareCards[key];
-  const [photo, display, sans] = await Promise.all([
+  const [source, display, sans] = await Promise.all([
     readFile(path.join(process.cwd(), "public/images", card.photo)),
     readFile(path.join(process.cwd(), "assets/fonts/fraunces-latin.ttf")),
     readFile(path.join(process.cwd(), "assets/fonts/jakarta-latin.ttf")),
   ]);
+  const photo = await sharp(source).jpeg({ quality: 80 }).toBuffer();
   const png = new ImageResponse(
     <div style={{ width: "100%", height: "100%", display: "flex", background: "#111111" }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
