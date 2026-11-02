@@ -33,7 +33,7 @@ export const socials = [
 export const spotify = {
   artistUrl: "https://open.spotify.com/artist/3x9Pa86pQ8yQ4XcvsuDgGu",
   embedUrl:
-    "https://open.spotify.com/embed/artist/3x9Pa86pQ8yQ4XcvsuDgGu?utm_source=generator",
+    "https://open.spotify.com/embed/artist/3x9Pa86pQ8yQ4XcvsuDgGu?utm_source=generator&theme=0",
 } as const;
 
 export const bandsintown = {

@@ -15,6 +15,20 @@ const paths: Record<(typeof socials)[number]["label"], string> = {
     "M16.4 4.2c-.9.1-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.5 1 .1 2-.5 2.6-1.2.6-.6 1-1.6.9-2.6ZM16.7 8.6c-1.4-.1-2.6.8-3.3.8s-1.7-.7-2.9-.7c-1.5 0-2.8.9-3.6 2.2-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7 1.9-1.1 2.6-2.2c.8-1.2 1.2-2.4 1.2-2.4s-2.3-.9-2.3-3.5c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.7-1.7-3.2-1.7h.2Z",
 };
 
+export function SocialIcon({
+  label,
+  className,
+}: {
+  label: (typeof socials)[number]["label"];
+  className?: string;
+}) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="currentColor" d={paths[label]} />
+    </svg>
+  );
+}
+
 export function SocialLinks({ className = "" }: { className?: string }) {
   return (
     <ul className={`flex flex-wrap items-center gap-1 ${className}`}>
@@ -27,9 +41,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
             aria-label={item.label}
             className="inline-flex size-10 items-center justify-center text-foreground transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-primary active:scale-[0.97]"
           >
-            <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
-              <path fill="currentColor" d={paths[item.label]} />
-            </svg>
+            <SocialIcon label={item.label} className="size-5" />
           </a>
         </li>
       ))}

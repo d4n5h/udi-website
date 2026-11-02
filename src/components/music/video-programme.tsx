@@ -23,8 +23,8 @@ export function VideoProgramme({ videos }: { videos: Video[] }) {
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setActiveId(video.id)}
-                className={`flex w-full items-center gap-3 p-2 text-left text-base leading-snug transition-[transform,color,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.985] ${
-                  selected ? "bg-background text-primary" : "text-foreground"
+                className={`flex w-full items-center gap-3 p-2 text-left text-base leading-snug text-foreground transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.985] ${
+                  selected ? "bg-background" : "hover:bg-background/70"
                 }`}
               >
                 <span className="relative aspect-video w-28 shrink-0 overflow-hidden bg-secondary">
