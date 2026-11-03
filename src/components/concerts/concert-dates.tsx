@@ -170,8 +170,8 @@ export function ConcertDates({ initial }: { initial: ConcertData }) {
   return (
     <>
       <section className="shell pt-12 pb-16 sm:pt-16 sm:pb-20">
-        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
-          <TicketIcon className="size-7" />
+        <h1 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+          <TicketIcon />
           Concerts
         </h1>
 

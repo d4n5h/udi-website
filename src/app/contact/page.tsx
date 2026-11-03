@@ -12,8 +12,8 @@ export default function ContactPage() {
     <section className="shell grid gap-14 py-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.1fr)] sm:py-24">
       <PageStructuredData page="contact" />
       <div>
-        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
-          <MailIcon className="size-7" />
+        <h1 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+          <MailIcon />
           Contact
         </h1>
         <p className="mt-6 max-w-md text-xl">

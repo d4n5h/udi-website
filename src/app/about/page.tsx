@@ -17,8 +17,8 @@ export default function AboutPage() {
     <>
       <PageStructuredData page="about" />
       <section className="shell pt-12 pb-20 sm:pt-16 sm:pb-28">
-        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
-          <UserIcon className="size-7" />
+        <h1 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+          <UserIcon />
           About
         </h1>
         <div className="mt-8 grid gap-10 md:grid-cols-[min(40%,calc((100svh-12rem)*2/3))_1fr] md:gap-x-12 lg:gap-x-20">

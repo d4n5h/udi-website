@@ -85,9 +85,10 @@ export function SiteHeader() {
           <Image
             src={assetPath("/images/logo.png")}
             alt="Udi Shlomo"
-            width={150}
-            height={32}
+            width={188}
+            height={40}
             priority
+            className="h-10 w-auto"
           />
         </Link>
 

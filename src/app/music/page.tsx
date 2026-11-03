@@ -16,8 +16,8 @@ export default function MusicPage() {
     <>
       <PageStructuredData page="music" />
       <section className="shell pt-12 pb-8 sm:pt-16">
-        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
-          <MusicIcon className="size-7" />
+        <h1 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+          <MusicIcon />
           Music
         </h1>
         <div className="mt-8 overflow-hidden">
