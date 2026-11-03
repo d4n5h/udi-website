@@ -56,13 +56,13 @@ for (const route of routes) {
     assert.equal(meta("profile:last_name"), "Shlomo");
   }
   if (route === "contact") {
-    assert.equal(meta("og:email"), "udi.shlomo.music@gmail.com");
-    assert.ok(meta("og:phone_number")?.includes("410"));
+    assert.equal(meta("og:email"), undefined);
+    assert.equal(meta("og:phone_number"), undefined);
   }
   assert.ok(meta("robots")?.includes("index, follow"));
   assert.ok(meta("googlebot")?.includes("max-image-preview:large"));
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${route}: exactly one main heading required`);
-  assert.ok(links.some(tag => tag.rel === "icon" && tag.type === "image/svg+xml"));
+  assert.ok(links.some(tag => tag.rel === "icon" && tag.type === "image/png"));
   assert.ok(links.some(tag => tag.rel === "apple-touch-icon" && tag.sizes === "180x180"));
   const graphs = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .flatMap(([, data]) => JSON.parse(data)["@graph"]);
@@ -76,8 +76,8 @@ for (const route of routes) {
   }
   if (route === "contact") {
     const contact = graphs.find(node => node["@type"] === "ContactPage").mainEntity;
-    assert.equal(contact.email, "udi.shlomo.music@gmail.com");
-    assert.equal(contact.telephone, "+47 410 64 044");
+    assert.equal(contact.email, undefined);
+    assert.equal(contact.telephone, undefined);
     assert.equal(contact.address.addressLocality, "Trondheim");
   }
   if (route === "music") {

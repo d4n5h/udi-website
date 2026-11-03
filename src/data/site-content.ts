@@ -4,8 +4,7 @@ export const site = {
   name: "Udi Shlomo",
   title: "UDI SHLOMO",
   email: "udi.shlomo.music@gmail.com",
-  phoneDisplay: "+47 410 64 044",
-  phoneHref: "tel:+4741064044",
+  web3formsAccessKey: "520fe063-4f24-4e10-8aab-76e0364a218c",
   location: "Trondheim, Norway",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://udishlomomusic.com/",
   description:
@@ -212,8 +211,8 @@ export const gallery: Photo[] = [
     src: assetPath("/images/gallery/udi-transform.webp"),
     width: 933,
     height: 1400,
-    alt: "Udi Shlomo playing drums at Trondheim Jazz Festival, a Transform bass drum in front of him",
-    caption: "Trondheim Jazz Festival. Photograph by Javad Montazeri, 2023.",
+    alt: "Udi Shlomo playing drums at Transform World Music Festival, a Transform bass drum in front of him",
+    caption: "Transform World Music Festival. Photograph by Javad Montazeri, 2023.",
   },
   {
     src: assetPath("/images/gallery/dsc4284.webp"),

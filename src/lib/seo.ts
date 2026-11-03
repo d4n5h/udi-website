@@ -39,7 +39,7 @@ export const seoPages = {
   contact: {
     path: "contact/",
     title: "Contact & Booking | Udi Shlomo, Jazz Drummer",
-    description: "Contact Udi Shlomo for concert bookings, recording sessions and press enquiries. Email and phone for the drummer and composer in Trondheim, Norway.",
+    description: "Contact Udi Shlomo for concert bookings, recording sessions and press enquiries. Send a message to the drummer and composer in Trondheim, Norway.",
     label: "Contact",
     type: "ContactPage",
   },
@@ -83,7 +83,6 @@ export function pageMetadata(key: SeoPage): Metadata {
       ...(key === "about"
         ? { type: "profile" as const, firstName: "Udi", lastName: "Shlomo" }
         : { type: "website" as const }),
-      ...(key === "contact" ? { emails: [site.email], phoneNumbers: [site.phoneDisplay] } : {}),
       locale: "en_GB",
       siteName: site.name,
       title,

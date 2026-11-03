@@ -5,7 +5,9 @@ import { YouTubeEmbed } from "@/components/media/youtube-embed";
 import { PhotoHero } from "@/components/photo-hero";
 import { ReviewList } from "@/components/review-list";
 import { Button } from "@/components/ui/button";
-import { biography, epkDownload, epkVideos, reviews, site, socials } from "@/data/site-content";
+import { BookIcon, HeadphonesIcon, PlayIcon, QuoteIcon } from "@/components/heading-icon";
+import { SocialIcon } from "@/components/layout/social-links";
+import { biography, epkDownload, epkVideos, reviews, site, socials, spotify } from "@/data/site-content";
 
 export const metadata = pageMetadata("epk");
 
@@ -18,7 +20,6 @@ const press = [
 ];
 const contacts = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
-  { label: "Phone", value: site.phoneDisplay, href: site.phoneHref },
   { label: "Website", value: site.url.replace("https://", "").replace(/\/$/, ""), href: site.url },
 ];
 
@@ -41,12 +42,15 @@ export default function EpkPage() {
       <PhotoHero
         title="Electronic press kit"
         subtitle="Udi Shlomo, drummer, composer and arranger."
-        wave="#111111"
+        fade="#111111"
       />
 
       <section className="shell grid gap-14 py-16 sm:py-24 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-7">
-          <h2 className="text-display-2">Biography</h2>
+          <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+            <BookIcon />
+            Biography
+          </h2>
           <div className="mt-8 max-w-[65ch] space-y-6 text-lg leading-relaxed">
             {biography.map((paragraph) => (
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -54,7 +58,10 @@ export default function EpkPage() {
           </div>
         </div>
         <aside className="lg:col-span-4 lg:col-start-9 lg:pt-3">
-          <h2 className="text-2xl leading-tight">Listen</h2>
+          <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+            <HeadphonesIcon />
+            Listen
+          </h2>
           <ul className="mt-5 border-b border-border">
             {listen.map((item) => (
               <li key={item.label}>
@@ -64,7 +71,10 @@ export default function EpkPage() {
                   rel="noopener noreferrer"
                   className={`group text-lg ${row}`}
                 >
-                  {item.label}
+                  <span className="inline-flex items-center gap-2.5">
+                    <SocialIcon label={item.label} className="size-5" />
+                    {item.label}
+                  </span>
                   <ArrowUpRight
                     aria-hidden="true"
                     className="size-5 self-center text-muted-foreground transition-[translate,color] duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
@@ -87,7 +97,10 @@ export default function EpkPage() {
                 key={review.id}
                 className={index ? "lg:col-span-4 lg:col-start-9" : "lg:col-span-7"}
               >
-                <h2 className="text-2xl leading-tight sm:text-3xl">{title}</h2>
+                <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+                  <QuoteIcon />
+                  {title}
+                </h2>
                 <div className="mt-6">
                   <ReviewList reviews={[review]} />
                 </div>
@@ -98,7 +111,19 @@ export default function EpkPage() {
       </section>
 
       <section className="shell py-16 sm:py-24">
-        <h2 className="text-display-2">Videos</h2>
+        <div className="overflow-hidden">
+          <iframe
+            className="-m-3 h-[732px] w-[calc(100%+1.5rem)] max-w-none border-0 bg-[#111111]"
+            src={spotify.embedUrl}
+            title="Udi Shlomo on Spotify"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+        <h2 className="mt-14 inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+          <PlayIcon />
+          Videos
+        </h2>
         <div className="mt-10 grid gap-x-6 gap-y-12 md:grid-cols-2">
           {epkVideos.map((video) => (
             <YouTubeEmbed key={video.id} video={video} />
@@ -107,25 +132,22 @@ export default function EpkPage() {
       </section>
 
       <section className="bg-card">
-        <div className="shell grid gap-10 py-16 sm:py-24 lg:grid-cols-12 lg:gap-6">
-          <h2 className="text-display-2 lg:col-span-7">Download the kit</h2>
-          <div className="lg:col-span-4 lg:col-start-9 lg:pt-3">
-            <ul className="border-b border-border">
-              {contacts.map((contact) => (
-                <li key={contact.label} className={row}>
-                  <span className="text-muted-foreground">{contact.label}</span>
-                  <a
-                    href={contact.href}
-                    className="tabular-nums underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-                  >
-                    {contact.value}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <DownloadButton />
-            </div>
+        <div className="shell flex flex-col gap-8 py-16 sm:py-24 xl:flex-row xl:items-center xl:gap-16">
+          <ul className="grid border-b border-border lg:grid-cols-2 lg:gap-x-12 lg:border-b-0 xl:min-w-0 xl:flex-1">
+            {contacts.map((contact) => (
+              <li key={contact.label} className={`${row} lg:border-b`}>
+                <span className="text-muted-foreground">{contact.label}</span>
+                <a
+                  href={contact.href}
+                  className="underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+                >
+                  {contact.value}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="xl:shrink-0">
+            <DownloadButton />
           </div>
         </div>
       </section>

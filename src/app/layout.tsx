@@ -27,10 +27,7 @@ export const metadata: Metadata = {
   category: "music",
   referrer: "strict-origin-when-cross-origin",
   icons: {
-    icon: [
-      { url: assetPath("/icons/icon-48.png"), type: "image/png", sizes: "48x48" },
-      { url: assetPath("/icons/favicon.svg"), type: "image/svg+xml", sizes: "any" },
-    ],
+    icon: [{ url: assetPath("/icons/icon-48.png"), type: "image/png", sizes: "48x48" }],
     shortcut: assetPath("/favicon.ico"),
     apple: [{ url: assetPath("/icons/apple-touch-icon.png"), sizes: "180x180", type: "image/png" }],
   },

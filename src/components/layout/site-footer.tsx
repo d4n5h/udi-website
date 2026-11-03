@@ -16,7 +16,7 @@ export function SiteFooter() {
     <footer className="bg-black">
       <div className="shell flex flex-col gap-6 py-8 sm:py-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav aria-label="Footer" className="flex justify-between gap-x-0.5 text-[clamp(0.75rem,3.5vw,1.0625rem)] whitespace-nowrap sm:justify-start sm:gap-x-6 sm:text-[1.0625rem]">
             {nav.map((item) => {
               const external = "external" in item && item.external;
               const current = !external && isCurrent(pathname, item.href);
@@ -43,7 +43,7 @@ export function SiteFooter() {
               );
             })}
           </nav>
-          <SocialLinks />
+          <SocialLinks className="self-center sm:self-auto" />
         </div>
         <p className="text-center text-sm text-muted-foreground">All Rights Reserved ©</p>
       </div>

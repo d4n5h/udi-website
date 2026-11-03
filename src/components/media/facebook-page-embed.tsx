@@ -51,7 +51,7 @@ export async function FacebookPageEmbed() {
 
   return (
     <section className="shell py-16 sm:py-20">
-      <h2 className="text-3xl">
+      <h2 className="text-2xl leading-tight sm:text-3xl">
         <a href={facebookPage.href} {...open} className="inline-flex items-center gap-2.5">
           <svg viewBox="0 0 24 24" className="size-6" aria-hidden="true">
             <path

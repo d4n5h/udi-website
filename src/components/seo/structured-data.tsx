@@ -86,8 +86,6 @@ export function PageStructuredData({ page }: { page: SeoPage }) {
                 "@type": "Person",
                 "@id": artist,
                 name: site.name,
-                email: site.email,
-                telephone: site.phoneDisplay,
                 address: {
                   "@type": "PostalAddress",
                   addressLocality: "Trondheim",

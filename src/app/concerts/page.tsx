@@ -4,6 +4,7 @@ import { pageMetadata, siteUrl } from "@/lib/seo";
 import { PageStructuredData } from "@/components/seo/structured-data";
 import { ConcertDates } from "@/components/concerts/concert-dates";
 import { loadConcertDates } from "@/lib/bandsintown";
+import { MicIcon } from "@/components/heading-icon";
 import { bandsintown } from "@/data/site-content";
 
 export const metadata = pageMetadata("concerts");
@@ -68,7 +69,10 @@ export default async function ConcertsPage() {
 
       <section className="bg-card">
         <div className="shell grid gap-8 py-16 sm:py-20 lg:grid-cols-12 lg:gap-6">
-          <h2 className="text-3xl leading-tight lg:col-span-6">Hear it live</h2>
+          <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl lg:col-span-6">
+          <MicIcon />
+          Hear it live
+        </h2>
           <ul className="border-b border-border lg:col-span-5 lg:col-start-8">
             {ways.map((way) => {
               const external = way.href.startsWith("http");

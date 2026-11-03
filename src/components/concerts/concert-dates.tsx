@@ -4,6 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { MapPin } from "lucide-react";
 import { bandsintown } from "@/data/site-content";
 import { loadConcertDates, type ConcertData, type Show } from "@/lib/bandsintown";
+import { CalendarIcon, TicketIcon } from "@/components/heading-icon";
 import { Button } from "@/components/ui/button";
 
 const link =
@@ -75,7 +76,7 @@ function NextShow({ show }: { show: Show }) {
   return (
     <article className="mt-8 grid gap-6 border-y border-border py-7 sm:mt-10 sm:py-8 lg:grid-cols-12 lg:items-center lg:gap-6 lg:py-10">
       <time dateTime={show.date.iso} className="flex items-end gap-3 lg:col-span-4">
-        <span className="font-display text-5xl leading-[0.8] tracking-[-0.03em] tabular-nums">
+        <span className="text-5xl leading-[0.8] tracking-[-0.03em] tabular-nums">
           {show.date.day}
         </span>
         <span>
@@ -107,7 +108,7 @@ function ShowRow({ show }: { show: Show }) {
         {show.date.weekday ? (
           <span className="block text-sm text-muted-foreground">{show.date.weekday}</span>
         ) : null}
-        <span className="mt-1 block font-display text-3xl leading-none">{show.date.day}</span>
+        <span className="mt-1 block text-3xl leading-none">{show.date.day}</span>
         <span className="mt-1 block text-sm text-muted-foreground">
           {show.date.month} {show.date.year}
         </span>
@@ -133,7 +134,10 @@ function Dates({ title, shows }: { title: string; shows: Show[] }) {
   if (!shows.length) return null;
   return (
     <section className="shell pb-16 sm:pb-20">
-      <h2 className="text-3xl leading-tight">{title}</h2>
+      <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+        <CalendarIcon />
+        {title}
+      </h2>
       <ul className="mt-6 border-b border-border">
         {shows.map((show) => (
           <ShowRow key={show.id} show={show} />
@@ -166,7 +170,10 @@ export function ConcertDates({ initial }: { initial: ConcertData }) {
   return (
     <>
       <section className="shell pt-12 pb-16 sm:pt-16 sm:pb-20">
-        <h1 className="text-4xl leading-tight sm:text-5xl">Concerts</h1>
+        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
+          <TicketIcon className="size-7" />
+          Concerts
+        </h1>
 
         {next ? <NextShow show={next} /> : null}
 

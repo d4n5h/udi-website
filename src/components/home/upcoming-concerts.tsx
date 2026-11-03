@@ -15,7 +15,7 @@ export async function UpcomingConcerts() {
   return (
     <section className="shell pt-16 sm:pt-20">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 className="inline-flex items-center gap-2.5 text-3xl">
+        <h2 className="inline-flex items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
           <svg viewBox="0 0 24 24" className="size-6 shrink-0" aria-hidden="true">
             <path d="M0 0h24v24H0z" fill="none" />
             <g
@@ -44,7 +44,7 @@ export async function UpcomingConcerts() {
               className="grid grid-cols-[4.5rem_1fr] items-center gap-x-4 gap-y-3 border-b border-border py-4 sm:grid-cols-[8rem_1fr_auto] sm:gap-x-8"
             >
               <time dateTime={show.date.iso} className="tabular-nums">
-                <span className="font-display text-2xl leading-none">{show.date.day}</span>
+                <span className="text-2xl leading-none">{show.date.day}</span>
                 <span className="mt-1 block text-sm text-muted-foreground">{show.date.month}</span>
               </time>
               <div className="min-w-0">

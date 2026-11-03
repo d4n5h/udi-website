@@ -3,6 +3,7 @@ import { PageStructuredData } from "@/components/seo/structured-data";
 import { SocialIcon } from "@/components/layout/social-links";
 import { VideoProgramme } from "@/components/music/video-programme";
 import { Button } from "@/components/ui/button";
+import { MusicIcon, PlayIcon } from "@/components/heading-icon";
 import { musicVideos, socials, spotify } from "@/data/site-content";
 
 export const metadata = pageMetadata("music");
@@ -15,7 +16,10 @@ export default function MusicPage() {
     <>
       <PageStructuredData page="music" />
       <section className="shell pt-12 pb-8 sm:pt-16">
-        <h1 className="text-4xl leading-tight sm:text-5xl">Music</h1>
+        <h1 className="inline-flex items-center gap-2.5 text-3xl leading-tight sm:text-4xl">
+          <MusicIcon className="size-7" />
+          Music
+        </h1>
         <div className="mt-8 overflow-hidden">
           <iframe
             className="-m-3 h-[732px] w-[calc(100%+1.5rem)] max-w-none border-0 bg-[#111111]"
@@ -44,7 +48,10 @@ export default function MusicPage() {
 
       <section className="bg-card">
         <div className="shell py-12 sm:py-16">
-          <h2 className="text-display-2 max-w-[12ch]">Watch a set</h2>
+          <h2 className="inline-flex max-w-[14ch] items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
+            <PlayIcon />
+            Watch a set
+          </h2>
           <div className="mt-10">
             <VideoProgramme videos={musicVideos} />
           </div>

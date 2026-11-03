@@ -13,6 +13,7 @@ export const contactFormSchema = z.object({
     .trim()
     .min(1, "Please enter a message")
     .max(5000, "Message must be 5000 characters or fewer"),
+  botcheck: z.string().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

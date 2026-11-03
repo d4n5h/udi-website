@@ -30,7 +30,9 @@ for (const file of readdirSync(root, { recursive: true })) {
   }
 }
 const contact = readFileSync(path.join(root, "contact", "index.html"), "utf8");
-assert.ok(contact.includes("Open Email Draft"), "Contact page must explain email draft behavior");
+assert.ok(contact.includes("Send message"), "Contact page must offer the message form");
+assert.ok(!contact.includes("410 64 044"), "Contact page must not show the phone number");
+assert.ok(!contact.includes("udi.shlomo.music@gmail.com"), "Contact page must not show the email address");
 console.log(`Verified ${pages.length} pages, 404, .nojekyll and ${checked} local links/assets under ${basePath || "/"}.`);
 
 await import("./check-seo.mjs");

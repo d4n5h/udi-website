@@ -110,7 +110,7 @@ export function SiteHeader() {
             className="w-full border-0 bg-background shadow-none sm:max-w-sm"
           >
             <SheetHeader>
-              <SheetTitle className="font-display text-3xl">Udi Shlomo</SheetTitle>
+              <SheetTitle className="font-sans text-3xl tracking-normal">Udi Shlomo</SheetTitle>
             </SheetHeader>
             <MobileNav />
             <SocialLinks className="px-2 pt-6" />

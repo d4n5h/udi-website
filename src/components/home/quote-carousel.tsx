@@ -54,7 +54,7 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
       </div>
 
       <h2
-        className={`${column} row-start-1 flex items-center gap-2.5 self-end pb-4 text-3xl sm:pb-6 lg:self-start lg:pt-[clamp(2.5rem,7vh,5rem)] lg:pb-0`}
+        className={`${column} row-start-1 flex items-center gap-2.5 self-end pb-4 text-2xl leading-tight sm:pb-6 sm:text-3xl lg:self-start lg:pt-[clamp(2.5rem,7vh,5rem)] lg:pb-0`}
       >
         <svg viewBox="0 0 24 24" className="size-6 shrink-0" aria-hidden="true">
           <g
@@ -88,7 +88,7 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
         aria-live={paused ? "polite" : "off"}
         className={`${column} row-start-3 pt-5 pb-10 animate-in fade-in-0 duration-300 motion-reduce:animate-none sm:pb-14 lg:w-[min(40rem,50vw)] lg:pb-[clamp(2.5rem,7vh,5rem)]`}
       >
-        <p className="font-sans text-sm leading-snug sm:text-base sm:leading-relaxed 2xl:text-lg">
+        <p className="font-display text-sm leading-snug sm:text-base sm:leading-relaxed 2xl:text-lg">
           {quoted(review.quote)}
         </p>
         <footer className="mt-3 flex flex-wrap items-baseline gap-x-3 sm:mt-4">

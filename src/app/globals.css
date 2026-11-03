@@ -114,7 +114,6 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
     letter-spacing: -0.03em;
     line-height: 0.95;
     text-wrap: balance;
@@ -141,7 +140,6 @@
 }
 
 @utility text-statement {
-  font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   line-height: 1.2;
   letter-spacing: -0.02em;

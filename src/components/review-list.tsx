@@ -30,7 +30,7 @@ export function ReviewList({
       <div className="flex flex-col gap-14">
         {reviews.map((review) => (
           <blockquote key={review.id}>
-            <p className="text-quote">{quoted(review.quote)}</p>
+            <p className="font-display text-base leading-relaxed">{quoted(review.quote)}</p>
             <footer className="mt-5 text-muted-foreground">
               {review.author}
               {review.author !== review.publication ? `, ${review.publication}` : ""}
@@ -46,15 +46,7 @@ export function ReviewList({
     <div className="gap-x-10 sm:columns-2 lg:columns-3">
       {reviews.map((review) => (
         <blockquote key={review.id} className="mb-12 break-inside-avoid border-t border-border pt-6">
-          <p
-            className={
-              review.quote.length < 160
-                ? "font-display text-2xl leading-snug tracking-[-0.02em]"
-                : "leading-relaxed"
-            }
-          >
-            {quoted(review.quote)}
-          </p>
+          <p className="font-display text-base leading-relaxed">{quoted(review.quote)}</p>
           <footer className="mt-4 text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{review.publication}</span>
             {review.author !== review.publication ? `, ${review.author}` : ""}
