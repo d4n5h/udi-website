@@ -3,7 +3,7 @@ import { PageStructuredData } from "@/components/seo/structured-data";
 import { SocialIcon } from "@/components/layout/social-links";
 import { VideoProgramme } from "@/components/music/video-programme";
 import { Button } from "@/components/ui/button";
-import { MusicIcon, PlayIcon } from "@/components/heading-icon";
+import { MusicIcon } from "@/components/heading-icon";
 import { musicVideos, socials, spotify } from "@/data/site-content";
 
 export const metadata = pageMetadata("music");
@@ -48,13 +48,7 @@ export default function MusicPage() {
 
       <section className="bg-card">
         <div className="shell py-12 sm:py-16">
-          <h2 className="inline-flex max-w-[14ch] items-center gap-2.5 text-2xl leading-tight sm:text-3xl">
-            <PlayIcon />
-            Watch a set
-          </h2>
-          <div className="mt-10">
-            <VideoProgramme videos={musicVideos} />
-          </div>
+          <VideoProgramme videos={musicVideos} />
         </div>
       </section>
     </>

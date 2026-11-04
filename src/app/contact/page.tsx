@@ -19,7 +19,6 @@ export default function ContactPage() {
         <p className="mt-6 max-w-md text-xl">
           For concerts, recordings and press, send a message.
         </p>
-        <p className="mt-8 text-lg">{site.location}</p>
         <SocialLinks className="mt-6" />
       </div>
       <ContactForm />

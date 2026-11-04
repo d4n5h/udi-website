@@ -68,7 +68,7 @@ export function QuoteCarousel({ reviews }: { reviews: Review[] }) {
             <path d="M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" />
           </g>
         </svg>
-        What they wrote
+        From the press
       </h2>
 
       <div className={`${column} row-start-2 flex items-center gap-3 pt-4 lg:pt-5`}>
