@@ -4,11 +4,18 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Facebook posts and Bandsintown dates are fetched at build time,
+  # so rebuild hourly to pick up new posts without a manual deploy.
+  schedule:
+    - cron: "17 * * * *"
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  # Lets the keepalive step re-enable this workflow; GitHub disables
+  # scheduled workflows after 60 days without repository activity.
+  actions: write
 
 concurrency:
   group: pages
@@ -39,6 +46,19 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ""
           NEXT_PUBLIC_SITE_URL: https://udishlomomusic.com/
+      # On scheduled runs, keep the last good deploy if Facebook could not be reached.
+      - name: Require Facebook posts on scheduled runs
+        if: github.event_name == 'schedule'
+        run: |
+          if grep -q "latest posts could not be loaded" out/index.html; then
+            echo "::error::Facebook posts could not be loaded; skipping deploy."
+            exit 1
+          fi
+      - name: Keep scheduled rebuilds enabled
+        if: github.event_name == 'schedule'
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/pages.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Upload site
         uses: actions/upload-pages-artifact@v5
         with:
