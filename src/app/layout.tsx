@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { site } from "@/data/site-content";
 import { assetPath } from "@/lib/asset-path";
 import { SiteStructuredData } from "@/components/seo/structured-data";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
 import "./globals.css";
 
 const sans = Plus_Jakarta_Sans({
@@ -44,6 +45,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <GoogleTagManagerNoScript />
+        <GoogleTagManager />
         <SiteStructuredData />
         <a
           href="#content"
